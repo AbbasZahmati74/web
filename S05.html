@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .field button {
+            font-size: 15;
+
+        }
+        
+    </style>
+<section>
+    <button id = "Add-User">+</button>
+    <div id = "User-List"></div>
+    <button id = "Cancel-Btn">Cancel</button>
+</section>
+<script>
+let UserList = document.getElementById("User-List");
+let AddUserbtn = document.getElementById("Add-User");
+let Users = [];
+let UserTemp = `
+<div Class="field">
+    <input type = "text" placeholder="firstName" id="f-name">
+    <input type = "text" placeholder="lastName" id="l-name">
+    <button>ADD</button>
+    </div>
+    `
+    let state = false;
+    function AddUser() {
+        UserList.innerHTML += UserTemp;
+    }
+    let UserOBJ ={
+
+    }
+AddUserbtn.addEventListener("click",AddUser)
+</script>
+</body>
+</html>
