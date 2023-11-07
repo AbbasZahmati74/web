@@ -1,13 +1,33 @@
-let http = require ('http');
+let http = require("http");
 let server = http.createServer(requestHandler);
-server.listen(80);
+server.listen(8040);
 
-let headers = {'Content-Type': 'Text/Plain'}
+let headers = {"Content-Type" : "Text/Plain"};
 
-function requestHandler(request, response){
-    console.log('request url: ', request.url);
-    console.log('request method: ', request.method);
-    response.writeHead(200, headers);
-    response.write('salam ' + request.url);
-    response.end();
+
+
+function requestHandler(request,response)
+{
+    let currentRoute = request.url.split('/');
+    let routes = 
+    {
+        sayHello : function ()
+        {
+            response.write("salam"+ " " + request.url + " "+  request.method + '\n');
+            response.end();
+        },
+        "saySomeThing":function()
+        {
+            response.write("<h1>"+ currentRoute[2]+ "</h1>" + '\n');
+            response.end();
+        },
+        "favicon.ico" : function()
+        {
+            response.write("fav" + '\n');
+            response.end();
+        }
+    }
+
+    
+    routes[currentRoute[1]]();
 }
